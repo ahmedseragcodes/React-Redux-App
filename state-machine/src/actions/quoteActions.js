@@ -6,6 +6,7 @@ export const FETCH_QUOTE_LOADING="FETCH_QUOTE_LOADING";
 export const FETCH_QUOTE_SUCCESS="FETCH_QUOTE_SUCCESS";
 export const FETCH_QUOTE_FAILURE="FETCH_QUOTE_FAILURE";
 
+
 export const getQuote=()=>{
     return dispatch => {
         dispatch(fetchQuoteLoading());
@@ -13,7 +14,7 @@ export const getQuote=()=>{
 
         axios.get(`${API}`)
         .then((res)=>{
-            dispatch(fetchQuoteSuccess(res.data[0]))
+            dispatch(fetchQuoteSuccess(res.data[Math.round(Math.random()*100)]))
         })
         .catch((err)=>{
             dispatch(fetchQuoteFailure(err))
