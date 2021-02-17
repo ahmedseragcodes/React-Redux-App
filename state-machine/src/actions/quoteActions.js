@@ -13,8 +13,7 @@ export const getQuote=()=>{
 
         axios.get(`${API}`)
         .then((res)=>{
-            dispatch(fetchQuoteSuccess(res.data[0].text))
-            dispatch(fetchQuoteSuccess(res.data[0].author))
+            dispatch(fetchQuoteSuccess(res.data[0]))
         })
         .catch((err)=>{
             dispatch(fetchQuoteFailure(err))
@@ -27,6 +26,7 @@ export const fetchQuoteLoading=()=>{
 }
 
 export const fetchQuoteSuccess=(quote)=>{
+    console.log(quote);
     return ({ type: FETCH_QUOTE_SUCCESS, payload: quote })
 }
 
